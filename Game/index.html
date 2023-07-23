@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pete Rose</title>
+	</head>
+<style>
+.player_search input[type=text] {
+  float: middle;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+.title img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width:25%;
+}
+
+</style>
+
+<body onload = "startName()">
+<div class = "title">
+<img src = "https://cdn.britannica.com/19/204819-050-72A2A4F8/Pete-Rose-1985.jpg"></img>
+<h1 id = "current_player"></h1>
+</div>
+ <div class="player_search">
+  <input type="text" id = "player_name"placeholder="Enter player name...">
+</div>
+<button id = "submit" type = "button" onclick = "post()">Submit</button>
+	<script>
+	function startName()
+	{
+		document.getElementById("current_player").textContent = "Pete Rose";
+	}
+
+	function changeName()
+	{
+		document.getElementById("current_player").textContent = "Greg Maddux";
+	}
+
+	function post()
+	{
+		changeName();
+		var nameField = document.getElementById("player_name");
+		var playerName = nameField.value;
+
+		fetch('http://localhost:3000/post', {
+		method: 'POST',
+		headers: {
+		'Accept': 'application/json',
+		'Content-Type': 'application/json'
+	},
+	body: JSON.stringify({ "name": playerName })
+})
+	.then(response => response.json())
+	.then(response => console.log(JSON.stringify(response)))
+	}
+	</script>
+</body>
+</html>

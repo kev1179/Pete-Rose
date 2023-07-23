@@ -1,0 +1,2 @@
+make
+./simplify.exe
