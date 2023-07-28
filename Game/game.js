@@ -1,9 +1,30 @@
+	window.onload = function()
+	{
+		startName();
+	};
+
+	document.addEventListener('keydown', (event) =>
+	{
+		let name = event.key;
+		if(name == 'Enter')
+		{
+			submit();
+		}
+
+	}, false);
+
 	async function startName()
 	{
 		let response = await fetch("http://localhost:3000/");
-		const name = await response.json();
-		document.getElementById("current_player").textContent = name;
-		//document.getElementById("current_player").textContent = response.text();
+		const data = await response.json();
+		document.getElementById("current_player").textContent = data.name;
+	}
+
+	async function getNameList()
+	{
+		let response = await fetch("http://localhost:3000/getNameList");
+		const data = await response.json();
+		return data.list;
 	}
 
 	function changeName(name)
@@ -24,31 +45,36 @@
 			timer -= 1;	
 			state = "lose";
 			document.getElementById("lose_text").textContent = "Time's Up!";
-
-			const startOver = document.createElement("button");
-			startOver.innerHTML = "Start Over";
-			document.body.appendChild(startOver);
-			startOver.id = "start_over";
-
-			startOver.addEventListener('click', () =>
-			{
-				location.reload();
-			})
+			
+			createLoseButton();
 		}
+	}
+
+	function createLoseButton()
+	{
+
+		const startOver = document.createElement("button");
+		startOver.innerHTML = "Start Over";
+		document.getElementById("gameInfo").appendChild(startOver);
+		startOver.id = "start_over";
+
+		document.getElementById("start_over").className = "btn btn-success";
+
+		startOver.addEventListener('click', () =>
+		{
+			location.reload();
+		})
 	}
 
 	var score = 0;
 	var state = "playing";
 	var timer = 10;
+	var guesses = new Set();
 
 	setInterval(updateTimer, 1000);
 
-	async function post()
+	async function post(playerName, currentName)
 	{
-		let nameField = document.getElementById("player_name");
-		let playerName = nameField.value;
-		let currentName = document.getElementById("current_player").textContent;
-
 		let response = await fetch('http://localhost:3000/post', 
 		{
 			method: 'POST',
@@ -67,6 +93,8 @@
 		{
 			changeName(data.name);
 			score++;
+			let batSound = new Audio('Sounds/bat_sound.mp3');
+			batSound.play();
 			document.getElementById("score").textContent = score;
 			timer = 10;
 		}
@@ -75,16 +103,21 @@
 		{
 			state = "lose";
 			document.getElementById("lose_text").textContent = data.reason;
-
-			const startOver = document.createElement("button");
-			startOver.innerHTML = "Start Over";
-			document.body.appendChild(startOver);
-			startOver.id = "start_over";
-
-			startOver.addEventListener('click', () =>
-			{
-				location.reload();
-			})
+			
+			createLoseButton();
 		}
+	}
 
+	async function submit()
+	{
+		let nameField = document.getElementById("player_name");
+		let playerName = nameField.value;
+		let currentName = document.getElementById("current_player").textContent;
+		
+		if(!guesses.has(playerName))
+		{
+			guesses.add(playerName);
+			post(playerName, currentName);
+			document.getElementById("player_name").value = "";
+		}
 	}

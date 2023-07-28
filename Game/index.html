@@ -1,39 +1,89 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Pete Rose</title>
-	</head>
+<head>
+ <title>Pete Rose</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
-.player_search input[type=text] {
-  float: middle;
-  padding: 6px;
-  border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px;
+body {
+ #background-image: url("https://leeuflames.com/images/2019/3/20/ARP__Baseball_Stadium_Shots_3_13_19__10.jpg");
+ background-color: #0f2cd1;
 }
 
-.title img {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width:25%;
+.input-text {
+ border:none; 
+ background-color: rgba(0,0,0,0.1); 
+ font-size:40px;
+ height:110px;
+ width:375px;
+ color:black;
+ position: absolute;
+ top: 480px;
+ left: 800px;
+}
+
+.baseball {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scorebook {
+ width: 33%;
+ position: absolute;
+ right: 1px;
+ bottom: 100px;
+}
+
+.score-square {
+  height: 200px;
+  width: 200px;
+  background-color: black;
+  border: white;
+  border-style: solid;
+  border-width: 20px;
+  position: absolute;
+  left: 100px;
 }
 
 </style>
 
-<body onload = "startName()">
-<div class = "title">
-<img src = "https://cdn.britannica.com/19/204819-050-72A2A4F8/Pete-Rose-1985.jpg"></img>
-<h1 id = "current_player"></h1>
-<h3 id = "score">0</h3>
+<body>
+
+<!--
+<nav class="navbar navbar-inverse" style="background-color: #1616c9; border: none">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" style = "color:white;"><b>Baseball Games</b></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class><a href="#" style = "color:white;"><b>Home</b></a></li>
+      <li class><a href="#" style = "color:white;"><b>Pete Rose</b></a></li>
+      </li>
+      <li><a href="#" style = "color:white;"><b>Store</b></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#" style = "color:white;"><span class="glyphicon glyphicon-user"></span><b> Sign Up</b></a></li>
+      <li><a href="#" style = "color:white;"><span class="glyphicon glyphicon-log-in"></span><b> Login</b></a></li>
+    </ul>
+  </div>
+</nav>
+-->
+
+<div class = "container">
+  <h1 id = "current_player" style = "text-align: center;"></h1>
+  <h1 id = "timer" style = "text-align: center;">10</h1>
+</div>
 <p id = "lose_text"></p>
+<div class = "container">
+   <input type="text" id = "player_name" placeholder="Enter player name..." autocomplete = "off" class = "form-control input-text"></input>
+   <img src = "Images/baseball.png" width = "400" height = "400" class = "baseball"></img>
 </div>
- <div class="player_search">
-  <input type="text" id = "player_name" placeholder="Enter player name..." autocomplete = "off"></input>
+<div class = "score-square">
+ <h3 id = "score" style = "text-align: center;">0</h3>
 </div>
-<button id = "submit" type = "button" onclick = "post()">Submit</button>
-<h1 id = "timer" style = "text-align: center;">10</h1>
 <script src = "game.js"></script>
 </body>
 </html>
