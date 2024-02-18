@@ -13,6 +13,12 @@
 
 	}, false);
 
+	const button = document.getElementById("enter");
+	button.addEventListener("click", function() 
+	{
+		submit();
+	});
+
 	async function startName()
 	{
 		let response = await fetch("http://localhost:3000/");
