@@ -26,18 +26,24 @@ app.get('/', (req, res) => {
 app.post('/post', (req, res) => {
 	let data = req.body;
 	let playerName = data.name;
-	let currentName = data.current;
-	let currentLastName = getLastName(currentName);
+	let playerNameGuess = playerName.toUpperCase();
 
-	let firstChar = playerName[0];
+	let currentName = data.current;
+	let currentNameGuess = currentName.toUpperCase();
+
+	let currentLastName = getLastName(currentName);
+	let currentLastNameGuess = currentLastName.toUpperCase();
+
+	let firstChar = playerNameGuess[0];
+
 	let arr = nameMap[firstChar];
 
-	if(firstChar != currentLastName[0])
+	if(firstChar != currentLastNameGuess[0])
 	{
 		return res.json({state: "lose", reason: "First letter not the same as the last letter!"});
 	}
 
-	else if(!arr.includes(playerName))
+	else if(!arr.includes(playerNameGuess))
 	{
 		return res.json({state: "lose", reason: "Player does not exist!"});
 	}
@@ -72,7 +78,7 @@ rl.on('line', (line) => {
 	{
 		let firstChar = line[0];
 		nameMap[firstChar] = nameMap[firstChar] || [];
-		nameMap[firstChar].push(line);
+		nameMap[firstChar].push(line.toUpperCase());
 		nameArray.push(line);
 	}
 });
