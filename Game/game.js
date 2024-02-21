@@ -26,7 +26,7 @@
 	});
 
 	//SOURCE: https://www.geeksforgeeks.org/how-to-create-popup-box-using-html-and-css/
-	closeLoseBox = document.getElementById("closeLoseBox");
+	const closeLoseBox = document.getElementById("closeLoseBox");
 	closeLoseBox.addEventListener("click", function()
 	{
 		loseDiv.classList.remove("show");
@@ -89,6 +89,7 @@
 	var state = "playing";
 	var timer = 10;
 	var guesses = new Set();
+	let playerStack = []
 
 	setInterval(updateTimer, 1000);
 
@@ -117,6 +118,14 @@
 			document.getElementById("score").textContent = score;
 			timer = 10;
 			document.getElementById("timer").textContent = "10";
+
+			document.getElementById("namesArea").innerHTML = "";
+			for(let i = playerStack.length - 1; i >= 0; i--)
+			{
+				let nameElement = document.createElement('p');
+				nameElement.textContent = playerStack[i];
+				document.getElementById("namesArea").appendChild(nameElement);
+			}
 		}
 
 		else if(data.state == "lose" && state != "lose")
@@ -139,6 +148,7 @@
 		if(!guesses.has(playerName))
 		{
 			guesses.add(playerName);
+			playerStack.push(playerName);
 			post(playerName, currentName);
 			document.getElementById("player_name").value = "";
 		}
@@ -150,6 +160,7 @@
 		state = "playing";
 		timer = 10;
 		guesses = new Set();
+		playerStack = [];
 		document.getElementById("timer").textContent = "10";
 		document.getElementById("score").textContent = "0";
 		startName();
