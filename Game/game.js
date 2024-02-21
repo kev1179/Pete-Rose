@@ -19,6 +19,14 @@
 		submit();
 	});
 
+	//SOURCE: https://www.geeksforgeeks.org/how-to-create-popup-box-using-html-and-css/
+	closeLoseBox = document.getElementById("closeLoseBox");
+	console.log(closeLoseBox);
+	closeLoseBox.addEventListener("click", function()
+	{
+		loseDiv.classList.remove("show");
+	});
+
 	async function startName()
 	{
 		let response = await fetch("http://localhost:3000/");
@@ -50,9 +58,7 @@
 		{
 			timer -= 1;	
 			state = "lose";
-			document.getElementById("lose_text").textContent = "Time's Up!";
-			
-			createLoseButton();
+			loseDiv.classList.add("show");
 		}
 	}
 
@@ -108,9 +114,10 @@
 		else if(data.state == "lose" && state != "lose")
 		{
 			state = "lose";
-			document.getElementById("lose_text").textContent = data.reason;
+			//document.getElementById("lose_text").textContent = data.reason;
 			
-			createLoseButton();
+			loseDiv.classList.add("show");
+			//createLoseButton();
 		}
 	}
 
