@@ -6,9 +6,15 @@
 	document.addEventListener('keydown', (event) =>
 	{
 		let name = event.key;
-		if(name == 'Enter')
+		if(name == 'Enter' && state != "lose")
 		{
 			submit();
+		}
+
+		else if(name == 'Enter' && state == "lose")
+		{
+			loseDiv.classList.remove("show");
+			resetGame();
 		}
 
 	}, false);

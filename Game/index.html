@@ -13,7 +13,7 @@
 }
 
 body {
- background-color: #add8e6;
+  /*background-color: #add8e6; */
 }
 
 .input-text {
@@ -132,16 +132,25 @@ left: 800px;
           margin: 4px 2px;
           cursor: pointer;
         }
+
+.bg {
+  opacity: 0.6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
 </style>
 
 <body>
-
+  <img src = "./Images/bg1.jpg" class = "bg"></img>
   <div id="loseDiv" class="loseBox">
     <div class="loseBox-content">
-        <h1 style="color:rgb(235, 79, 79); text-align: center;">
+        <h1 style="color:rgb(235, 79, 79); text-align: center; font-family: Papyrus,fantasy;">
               Game Over!
           </h1>
-        <p style = "text-align: center;" id = "loseReason"></p>
+        <p style = "text-align: center; font-family: Arial;" id = "loseReason"></p>
         <button id="closeLoseBox" class = "tryAgain">
               Restart
           </button>
