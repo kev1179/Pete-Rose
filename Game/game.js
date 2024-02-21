@@ -21,10 +21,10 @@
 
 	//SOURCE: https://www.geeksforgeeks.org/how-to-create-popup-box-using-html-and-css/
 	closeLoseBox = document.getElementById("closeLoseBox");
-	console.log(closeLoseBox);
 	closeLoseBox.addEventListener("click", function()
 	{
 		loseDiv.classList.remove("show");
+		resetGame();
 	});
 
 	async function startName()
@@ -58,6 +58,7 @@
 		{
 			timer -= 1;	
 			state = "lose";
+			document.getElementById("loseReason").textContent = "Ran out of time!";
 			loseDiv.classList.add("show");
 		}
 	}
@@ -109,6 +110,7 @@
 			batSound.play();
 			document.getElementById("score").textContent = score;
 			timer = 10;
+			document.getElementById("timer").textContent = "10";
 		}
 
 		else if(data.state == "lose" && state != "lose")
@@ -117,6 +119,7 @@
 			//document.getElementById("lose_text").textContent = data.reason;
 			
 			loseDiv.classList.add("show");
+			document.getElementById("loseReason").textContent = data.reason;
 			//createLoseButton();
 		}
 	}
@@ -133,4 +136,15 @@
 			post(playerName, currentName);
 			document.getElementById("player_name").value = "";
 		}
+	}
+
+	function resetGame()
+	{
+		score = 0;
+		state = "playing";
+		timer = 10;
+		guesses = new Set();
+		document.getElementById("timer").textContent = "10";
+		document.getElementById("score").textContent = "0";
+		startName();
 	}
