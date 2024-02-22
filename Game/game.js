@@ -1,6 +1,22 @@
+function getCookie(name) {
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const cookies = decodedCookie.split(';');
+    for(let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        if (cookie.startsWith(name + "=")) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    return "";
+}
+
 	window.onload = function()
 	{
 		startName();
+		const currentBackground = getCookie("bg");
+		let fileName = "url('./Images/bg" + currentBackground + ".jpg')";
+		let styleElem = document.head.appendChild(document.createElement("style"));
+		styleElem.innerHTML = ".bg:before {background-image: " + fileName + ";}";
 	};
 
 	document.addEventListener('keydown', (event) =>
@@ -119,12 +135,18 @@
 			timer = 10;
 			document.getElementById("timer").textContent = "10";
 
-			document.getElementById("namesArea").innerHTML = "";
+			let namesArea = document.getElementById("namesArea");
+			namesArea.innerHTML = "";
 			for(let i = playerStack.length - 1; i >= 0; i--)
 			{
 				let nameElement = document.createElement('p');
+				nameElement.style.color = "white";
+				nameElement.style.textAlign = "center";
+				nameElement.style.fontFamily = "Arial";
+				nameElement.style.fontSize = "30px";
+
 				nameElement.textContent = playerStack[i];
-				document.getElementById("namesArea").appendChild(nameElement);
+				namesArea.appendChild(nameElement);
 			}
 		}
 
@@ -163,5 +185,6 @@
 		playerStack = [];
 		document.getElementById("timer").textContent = "10";
 		document.getElementById("score").textContent = "0";
+		document.getElementById("namesArea").innerHTML = "";
 		startName();
 	}
