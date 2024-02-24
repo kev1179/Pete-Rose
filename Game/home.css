@@ -1,0 +1,190 @@
+@font-face 
+{
+  font-family: title;
+  src: url(./Fonts/title.ttf)
+}
+
+#bgVideo 
+{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+
+.settings
+{
+    font-size:48px;
+    color:red;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.navbar 
+{
+  background-color: #e77a88;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0px;
+  width: 98%;
+}
+
+.navbar-logo img 
+{
+  height: 40px;
+}
+
+.navbar-menu 
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li 
+{
+  display: inline;
+  margin-right: 20px;
+}
+
+.navbar-menu li:last-child 
+{
+  margin-right: 0;
+}
+
+.navbar-menu li a 
+{
+  color: #fff;
+  text-decoration: none;
+}
+
+.settings-icon img 
+{
+  height: 50px;
+}
+
+.settingsMenu 
+{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: none;
+}
+        .settingsMenu-content 
+        {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888888;
+            width: 30%;
+            font-weight: bolder;
+        }
+        .settingsMenu-content button 
+        {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .show 
+        {
+            display: block;
+        }
+
+.column 
+{
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.row::after 
+{
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.closeSettings 
+{
+          background-color: #008CBA;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+}
+
+.play 
+{
+    background-color: #e02121;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.rulesList 
+{
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: none;
+}
+        .rulesList-content 
+        {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888888;
+            width: 30%;
+            font-weight: bolder;
+        }
+        .rulesList-content button 
+        {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .closeRules
+        {
+          background-color: #008CBA;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }

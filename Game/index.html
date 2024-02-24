@@ -3,139 +3,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./home.css"></link>
 <head>
 <title>Pete Rose</title>
 </head>
-<style>
-    #bgVideo {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-}
-
-.settings
-{
-    font-size:48px;
-    color:red;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-}
-
-.navbar {
-  background-color: #e77a88;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  position: fixed;
-  top: 0px;
-  width: 98%;
-}
-
-.navbar-logo img {
-  height: 40px;
-}
-
-.navbar-menu {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-menu li {
-  display: inline;
-  margin-right: 20px;
-}
-
-.navbar-menu li:last-child {
-  margin-right: 0;
-}
-
-.navbar-menu li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.settings-icon img {
-  height: 50px;
-}
-
-.settingsMenu {
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-            display: none;
-        }
-        .settingsMenu-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 20px;
-            border: 1px solid #888888;
-            width: 30%;
-            font-weight: bolder;
-        }
-        .settingsMenu-content button {
-            display: block;
-            margin: 0 auto;
-        }
-
-        .show {
-            display: block;
-        }
-
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 5px;
-}
-
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.closeSettings {
-background-color: #008CBA;
-          border: none;
-          color: white;
-          padding: 15px 32px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 16px;
-          margin: 4px 2px;
-          cursor: pointer;
-}
-
-.play {
-    background-color: #e02121;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    position: fixed;
-    bottom: 0px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
-
-</style>
 <body>
     <button id ="play" class = "play" onclick = "window.location.href = './game.html'">Play!</button>
     <video autoplay muted loop id="bgVideo">
@@ -146,11 +17,13 @@ background-color: #008CBA;
         <div class="navbar-logo">
           <a href="#"><img src="./Images/helmet.png" alt="Logo"></a>
         </div>
-        <h1>Pete Rose</h1>
+        <h1 style = "font-family: title; font-size: 48px;">Pete Rose</h1>
         <div class="settings-icon">
+          <img src = "./Images/rules.png" alt = "Rules" id = "rules"></img>
           <img src="./Images/settings.png" alt="Settings" id = "settings">
         </div>
       </nav>
+
       <div id="settingsMenu" class="settingsMenu">
         <div class="settingsMenu-content">
             <h1 style="color:rgb(235, 79, 79); text-align: center; font-family: Arial;">
@@ -174,6 +47,21 @@ background-color: #008CBA;
                 Exit
             </button>
         </div>
+        </div>
+
+        <div id="rulesList" class="rulesList">
+          <div class="rulesList-content">
+              <h1>Rules</h1>
+              <ul>
+                <li>You have to enter a player whose first name starts with the last name of the player on screen</li>
+                <li>You have 10 seconds to enter a name</li>
+                <li>You can't enter a name twice</li>
+              </ul>  
+              <button id="closeRules" class = "closeRules">
+                Exit
+            </button>
+            </div>
+          </div>
 </body>
 <script src = "home.js"></script>
 </html>

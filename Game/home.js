@@ -24,6 +24,12 @@ settings.addEventListener("click", function()
     settingsMenu.classList.add("show");
 });
 
+
+rules.addEventListener("click", function()
+{
+    rulesList.style.display = "block";
+});
+
 bg1.addEventListener("click", function()
 {
     bg1.style.opacity = "0.6";
@@ -63,4 +69,9 @@ bg4.addEventListener("click", function()
 closeSettings.addEventListener("click", function()
 {
     settingsMenu.classList.remove("show");
+});
+
+closeRules.addEventListener("click", function()
+{
+    rulesList.style.display = "none";
 });
