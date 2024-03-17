@@ -1,2 +1,2 @@
 Compile:
-	g++ -o simplify.exe simplify.cpp
+	g++ -o simplify simplify.cpp
